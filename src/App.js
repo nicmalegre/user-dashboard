@@ -1,29 +1,31 @@
-import { Container, Grid } from "@mui/material";
+import { Container } from "@mui/material";
 import React from "react";
+import Loading from "./components/Loading";
 import UserTable from "./components/UserTable";
+import { useFetchUsers } from "./hooks/useFetchUsers";
+import { Title, UserList, UserListHeader, UserListBody } from "./styles";
 
 function App() {
+  const { users, isLoading } = useFetchUsers();
+
+  if (isLoading) return <Loading />;
+
   return (
     <Container maxWidth="md">
-      <h1 style={{ marginTop: 34, marginBottom: 34 }}>Dashboard</h1>
+      {/* Title */}
+      <Title>Dashboard</Title>
 
-      <Grid
-        style={{
-          padding: 1,
-          borderRadius: 8,
-          boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-        }}
-      >
+      <UserList>
         {/* User list - Header */}
-        <Grid padding={4} style={{ borderBottom: "1px solid black" }}>
+        <UserListHeader>
           <h4>User list</h4>
-        </Grid>
+        </UserListHeader>
 
-        {/* Table */}
-        <Grid padding={4}>
-          <UserTable />
-        </Grid>
-      </Grid>
+        {/* User list - Body */}
+        <UserListBody>
+          <UserTable users={users} />
+        </UserListBody>
+      </UserList>
     </Container>
   );
 }

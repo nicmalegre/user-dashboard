@@ -31,28 +31,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const rows = [
-  {
-    id: "12",
-    name: "John Smith",
-    username: "johnsmith",
-    email: "john@smith.com",
-    city: "NYC",
-    edit: "Edit",
-    delete: "Delete",
-  },
-  {
-    id: "15",
-    name: "Jame Smith",
-    username: "jamesmith",
-    email: "jame@smith.com",
-    city: "LA",
-    edit: "Edit",
-    delete: "Delete",
-  },
-];
-
-function UserTable() {
+function UserTable({ users }) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -68,19 +47,28 @@ function UserTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row" align="center">
-                {row.id}
-              </StyledTableCell>
-              <StyledTableCell align="center">{row.name}</StyledTableCell>
-              <StyledTableCell align="center">{row.username}</StyledTableCell>
-              <StyledTableCell align="center">{row.email}</StyledTableCell>
-              <StyledTableCell align="center">{row.city}</StyledTableCell>
-              <StyledTableCell align="center">{row.edit}</StyledTableCell>
-              <StyledTableCell align="center">{row.delete}</StyledTableCell>
-            </StyledTableRow>
-          ))}
+          {users.length &&
+            users.map(user => (
+              <StyledTableRow key={user.name}>
+                <StyledTableCell component="th" scope="row" align="center">
+                  {user.id}
+                </StyledTableCell>
+                <StyledTableCell align="center">{user.name}</StyledTableCell>
+                <StyledTableCell align="center">
+                  {user.username}
+                </StyledTableCell>
+                <StyledTableCell align="center">{user.email}</StyledTableCell>
+                <StyledTableCell align="center">
+                  {user.address?.city}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <a href="-">Edit</a>
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <a href="-">Delete</a>
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
         </TableBody>
       </Table>
     </TableContainer>
