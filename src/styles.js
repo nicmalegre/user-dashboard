@@ -11,7 +11,7 @@ export const UserList = styled(Grid)(() => ({
 }));
 
 export const UserListHeader = styled(Grid)(() => ({
-  padding: 32,
+  padding: "16px 32px 16px 32px",
   borderBottom: "1px solid rgba(0, 0, 0, 0.24)",
 }));
 

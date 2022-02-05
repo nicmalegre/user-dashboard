@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Button, Container, Grid } from "@mui/material";
 import React from "react";
 import Loading from "./components/Loading";
 import UserTable from "./components/UserTable";
@@ -11,14 +11,27 @@ function App() {
   if (isLoading) return <Loading />;
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg">
       {/* Title */}
       <Title>Dashboard</Title>
 
       <UserList>
         {/* User list - Header */}
-        <UserListHeader>
-          <h4>User list</h4>
+        <UserListHeader container alignItems="center">
+          <Grid item xs={8}>
+            <h3>User list</h3>
+          </Grid>
+
+          <Grid item xs={4} textAlign="end">
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              style={{ textTransform: "capitalize" }}
+            >
+              Add new
+            </Button>
+          </Grid>
         </UserListHeader>
 
         {/* User list - Body */}

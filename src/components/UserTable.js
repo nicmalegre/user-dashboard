@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import {
+  Button,
   Paper,
   Table,
   TableBody,
@@ -13,21 +14,12 @@ import React from "react";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
+    backgroundColor: theme.palette.action.hover,
+    color: theme.palette.common.black,
+    fontWeight: "bold",
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
   },
 }));
 
@@ -49,7 +41,7 @@ function UserTable({ users }) {
         <TableBody>
           {users.length &&
             users.map(user => (
-              <StyledTableRow key={user.name}>
+              <TableRow key={user.name}>
                 <StyledTableCell component="th" scope="row" align="center">
                   {user.id}
                 </StyledTableCell>
@@ -62,12 +54,24 @@ function UserTable({ users }) {
                   {user.address?.city}
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                  <a href="-">Edit</a>
+                  <Button
+                    variant="contained"
+                    color="warning"
+                    style={{ textTransform: "lowercase" }}
+                  >
+                    Edit
+                  </Button>
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                  <a href="-">Delete</a>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    style={{ textTransform: "lowercase" }}
+                  >
+                    Delete
+                  </Button>
                 </StyledTableCell>
-              </StyledTableRow>
+              </TableRow>
             ))}
         </TableBody>
       </Table>
