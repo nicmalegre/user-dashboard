@@ -58,6 +58,7 @@ function UserTable({ users }) {
                     variant="contained"
                     color="warning"
                     style={{ textTransform: "lowercase" }}
+                    onClick={() => console.log(user)}
                   >
                     Edit
                   </Button>
@@ -67,6 +68,7 @@ function UserTable({ users }) {
                     variant="contained"
                     color="error"
                     style={{ textTransform: "lowercase" }}
+                    onClick={() => console.log(user.id)}
                   >
                     Delete
                   </Button>
