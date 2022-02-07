@@ -18,3 +18,7 @@ export const FormHeader = styled(Grid)(() => ({
 export const FormBody = styled(Grid)(() => ({
   padding: 32,
 }));
+
+export const FormInput = styled(Grid)(() => ({
+  marginTop: 20,
+}));

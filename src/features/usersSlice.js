@@ -13,6 +13,17 @@ export const usersSlice = createSlice({
     addUser: (state, action) => {
       state.users = [...state.users, action.payload];
     },
+    updateUser: (state, action) => {
+      const { id, name, email, username, address } = action.payload;
+      const existingUser = state.users.find(user => user.id === id);
+
+      if (existingUser) {
+        existingUser.name = name;
+        existingUser.email = email;
+        existingUser.username = username;
+        existingUser.address.city = address.city;
+      }
+    },
   },
   extraReducers(builder) {
     builder
@@ -25,15 +36,12 @@ export const usersSlice = createSlice({
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.status = "failed";
-        console.log("error error error error");
-        console.log(action);
-
         state.error = action.error.message;
       });
   },
 });
 
-export const { setUsers, addUser } = usersSlice.actions;
+export const { addUser, updateUser } = usersSlice.actions;
 
 export const selectUsers = state => state.users.users;
 

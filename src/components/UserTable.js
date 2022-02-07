@@ -11,6 +11,7 @@ import {
   TableRow,
 } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -24,6 +25,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 function UserTable({ users }) {
+  let navigate = useNavigate();
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -47,18 +50,18 @@ function UserTable({ users }) {
                 </StyledTableCell>
                 <StyledTableCell align="center">{user.name}</StyledTableCell>
                 <StyledTableCell align="center">
-                  {user.username}
+                  {user.username ?? "-"}
                 </StyledTableCell>
                 <StyledTableCell align="center">{user.email}</StyledTableCell>
                 <StyledTableCell align="center">
-                  {user.address?.city}
+                  {user.address?.city ?? "-"}
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   <Button
                     variant="contained"
                     color="warning"
                     style={{ textTransform: "lowercase" }}
-                    onClick={() => console.log(user)}
+                    onClick={() => navigate("/form", { state: { user } })}
                   >
                     Edit
                   </Button>
