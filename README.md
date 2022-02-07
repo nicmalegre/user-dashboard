@@ -2,10 +2,9 @@
 
 ## About this project
 
-React/Redux administration panel / dashboard for user management.
+React/Redux administration panel/dashboard for user management.
 
-If you want to see the result, you can go to: https://nicmalegre.github.io/api-pokemon/
-Also is avaliable on: https://react-api-poke.herokuapp.com/
+If you want to see the result, you can go to: https://user-dashboard-nicmalegre.herokuapp.com/
 
 **Technologies and libraries:**
 
