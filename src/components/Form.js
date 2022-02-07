@@ -2,12 +2,7 @@ import { Button, Grid, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import {
-  addUser,
-  selectUserById,
-  selectUsers,
-  updateUser,
-} from "../features/usersSlice";
+import { addUser, selectUserById } from "../features/usersSlice";
 import { useUpdateUser } from "../hooks/useUpdateUser";
 import Loading from "./Loading";
 import { FormBody, FormHeader, FormSection, FormInput } from "./styles";

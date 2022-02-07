@@ -3,15 +3,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
 import UserTable from "./UserTable";
-import {
-  addUser,
-  fetchUsers,
-  selectUserById,
-  selectUsers,
-} from "../features/usersSlice";
-import { Title, UserList, UserListHeader, UserListBody } from "../styles";
+import { fetchUsers, selectUsers } from "../features/usersSlice";
+import { UserList, UserListHeader, UserListBody } from "../styles";
 import { useNavigate } from "react-router-dom";
-import { useUpdateUser } from "../hooks/useUpdateUser";
 
 function Home() {
   const dispatch = useDispatch();
