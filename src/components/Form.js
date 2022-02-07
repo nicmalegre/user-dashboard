@@ -12,12 +12,12 @@ function Form() {
   let navigate = useNavigate();
   let location = useLocation();
 
-  const [name, setName] = useState(null);
-  const [errorName, setErrorName] = useState("");
-  const [email, setEmail] = useState(null);
-  const [errorEmail, setErrorEmail] = useState("");
-  const [username, setUsername] = useState(null);
-  const [city, setCity] = useState(null);
+  const [name, setName] = useState("");
+  const [errorName, setErrorName] = useState(false);
+  const [email, setEmail] = useState("");
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [username, setUsername] = useState("");
+  const [city, setCity] = useState("");
 
   const { user } = location.state || {};
   useEffect(() => {
@@ -35,8 +35,8 @@ function Form() {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    if (!name) setErrorName("Name is required.");
-    if (!email) setErrorEmail("Email is required.");
+    if (!name) setErrorName(true);
+    if (!email) setErrorEmail(true);
 
     const saveUser = {
       name: name,
@@ -87,10 +87,10 @@ function Form() {
                   size="small"
                   value={name}
                   error={errorName}
-                  helperText={errorName ?? null}
+                  helperText={errorName ? "Name is required." : ""}
                   onChange={e => {
                     setName(e.target.value);
-                    setErrorName(null);
+                    setErrorName(false);
                   }}
                 />
               </Grid>
@@ -107,10 +107,10 @@ function Form() {
                   size="small"
                   value={email}
                   error={errorEmail}
-                  helperText={errorEmail ?? null}
+                  helperText={errorEmail ? "Email is required." : ""}
                   onChange={e => {
                     setEmail(e.target.value);
-                    setErrorEmail(null);
+                    setErrorEmail(false);
                   }}
                 />
               </Grid>
