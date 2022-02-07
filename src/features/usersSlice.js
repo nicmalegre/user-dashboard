@@ -6,6 +6,26 @@ const initialState = {
   error: null,
 };
 
+const compareAscending = (a, b) => {
+  if (a.username < b.username) {
+    return -1;
+  }
+  if (a.username > b.username) {
+    return 1;
+  }
+  return 0;
+};
+
+const compareDescending = (a, b) => {
+  if (a.username < b.username) {
+    return 1;
+  }
+  if (a.username > b.username) {
+    return -1;
+  }
+  return 0;
+};
+
 export const usersSlice = createSlice({
   name: "users",
   initialState,
@@ -28,6 +48,14 @@ export const usersSlice = createSlice({
         existingUser.address.city = address.city;
       }
     },
+    sortUsers: (state, action) => {
+      const { sort } = action.payload;
+      if (sort) {
+        state.users = [...state.users.sort(compareAscending)];
+      } else {
+        state.users = [...state.users.sort(compareDescending)];
+      }
+    },
   },
   extraReducers(builder) {
     builder
@@ -45,7 +73,8 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { addUser, deleteUser, updateUser } = usersSlice.actions;
+export const { addUser, deleteUser, updateUser, sortUsers } =
+  usersSlice.actions;
 
 export const selectUsers = state => state.users.users;
 
