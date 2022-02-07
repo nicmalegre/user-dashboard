@@ -13,6 +13,10 @@ export const usersSlice = createSlice({
     addUser: (state, action) => {
       state.users = [...state.users, action.payload];
     },
+    deleteUser: (state, action) => {
+      const { id } = action.payload;
+      state.users = [...state.users.filter(user => user.id !== id)];
+    },
     updateUser: (state, action) => {
       const { id, name, email, username, address } = action.payload;
       const existingUser = state.users.find(user => user.id === id);
@@ -41,7 +45,7 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { addUser, updateUser } = usersSlice.actions;
+export const { addUser, deleteUser, updateUser } = usersSlice.actions;
 
 export const selectUsers = state => state.users.users;
 

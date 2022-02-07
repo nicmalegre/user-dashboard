@@ -29,7 +29,7 @@ function Form() {
     }
   }, [user]);
 
-  const { putUser, isLoading } = useUpdateUser();
+  const { handleUpdateUser, isLoading } = useUpdateUser();
   const userSelected = useSelector(state => selectUserById(state, user?.id));
 
   const handleSubmit = async e => {
@@ -47,7 +47,7 @@ function Form() {
 
     if (name && email) {
       if (userSelected) {
-        await putUser({ id: user.id, ...saveUser });
+        await handleUpdateUser({ id: user.id, ...saveUser });
       } else {
         dispatch(
           addUser({

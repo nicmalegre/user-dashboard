@@ -1,10 +1,10 @@
-import { Button, Container, Grid } from "@mui/material";
+import { Button, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
 import UserTable from "./UserTable";
 import { fetchUsers, selectUsers } from "../features/usersSlice";
-import { UserList, UserListHeader, UserListBody } from "../styles";
+import { UserList, UserListHeader, UserListBody } from "./styles";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
@@ -53,7 +53,18 @@ function Home() {
 
       {/* User list - Body */}
       <UserListBody>
-        <UserTable users={users} />
+        {users.length > 0 ? (
+          <UserTable users={users} />
+        ) : (
+          <>
+            <Typography fontSize={18} fontWeight={600} textAlign="center">
+              There are no users.
+            </Typography>
+            <Typography textAlign="center">
+              If you want to add a new one, please press "Add New" button.
+            </Typography>
+          </>
+        )}
       </UserListBody>
     </UserList>
   );

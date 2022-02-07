@@ -6,7 +6,8 @@ export const useUpdateUser = () => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
-  const putUser = async newUser => {
+  const handleUpdateUser = async newUser => {
+    if (!newUser) return;
     setIsLoading(true);
     try {
       const response = await fetch(
@@ -31,5 +32,5 @@ export const useUpdateUser = () => {
     }
   };
 
-  return { putUser, isLoading };
+  return { handleUpdateUser, isLoading };
 };
