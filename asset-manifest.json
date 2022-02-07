@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/user-dashboard/static/css/main.492d5152.css",
+    "main.js": "/user-dashboard/static/js/main.9e8ba8cd.js",
+    "index.html": "/user-dashboard/index.html",
+    "main.492d5152.css.map": "/user-dashboard/static/css/main.492d5152.css.map",
+    "main.9e8ba8cd.js.map": "/user-dashboard/static/js/main.9e8ba8cd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.492d5152.css",
+    "static/js/main.9e8ba8cd.js"
+  ]
+}
