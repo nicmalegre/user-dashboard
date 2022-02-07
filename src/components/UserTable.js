@@ -33,7 +33,7 @@ function UserTable({ users }) {
 
   const [openModal, setOpenModal] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
-  const [sort, setSort] = useState(true);
+  const [sort, setSort] = useState(null);
 
   const handleDelete = user => {
     setUserToDelete(user);

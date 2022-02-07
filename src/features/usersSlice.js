@@ -50,6 +50,7 @@ export const usersSlice = createSlice({
     },
     sortUsers: (state, action) => {
       const { sort } = action.payload;
+      if (sort === null) return;
       if (sort) {
         state.users = [...state.users.sort(compareAscending)];
       } else {
