@@ -3,27 +3,26 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
 import UserTable from "./UserTable";
-import { fetchUsers, selectUsers } from "../features/usersSlice";
+import { fetchUsers } from "../features/usersSlice";
 import { UserList, UserListHeader, UserListBody } from "./styles";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
   const dispatch = useDispatch();
-  const users = useSelector(selectUsers);
-  const usersStatus = useSelector(state => state.users.status);
-  const error = useSelector(state => state.users.error);
+
+  const { users, status, error } = useSelector(({ users }) => users);
 
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (usersStatus === "idle") {
+    if (status === "idle") {
       dispatch(fetchUsers());
     }
-  }, [usersStatus, dispatch]);
+  }, [status, dispatch]);
 
-  if (usersStatus === "loading") return <Loading />;
+  if (status === "loading") return <Loading />;
 
-  if (usersStatus === "failed")
+  if (status === "failed")
     return (
       <Container maxWidth="lg">
         <h1>{error}</h1>

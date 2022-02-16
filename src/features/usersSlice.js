@@ -77,8 +77,6 @@ export const usersSlice = createSlice({
 export const { addUser, deleteUser, updateUser, sortUsers } =
   usersSlice.actions;
 
-export const selectUsers = state => state.users.users;
-
 export const selectUserById = (state, userId) =>
   state.users.users.find(user => user.id === userId);
 
