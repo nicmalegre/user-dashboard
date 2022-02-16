@@ -10,7 +10,7 @@ export const useDeleteUser = () => {
     if (!userId) return;
     setIsLoading(true);
     try {
-      await fetch(`https://jsonplaceholder.typicode.com/posts/${userId}`, {
+      await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`, {
         method: "DELETE",
       });
 
