@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { addUser, selectUserById } from "../features/usersSlice";
 import { useUpdateUser } from "../hooks/useUpdateUser";
+import { validateEmail } from "../utils";
 import Loading from "./Loading";
 import { FormBody, FormHeader, FormSection, FormInput } from "./styles";
 
@@ -15,7 +16,7 @@ function Form() {
   const [name, setName] = useState("");
   const [errorName, setErrorName] = useState(false);
   const [email, setEmail] = useState("");
-  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorEmail, setErrorEmail] = useState("");
   const [username, setUsername] = useState("");
   const [city, setCity] = useState("");
 
@@ -36,7 +37,13 @@ function Form() {
     e.preventDefault();
 
     if (!name) setErrorName(true);
-    if (!email) setErrorEmail(true);
+
+    if (!email) {
+      setErrorEmail("Email is required.");
+    } else if (!validateEmail(email)) {
+      setErrorEmail("Email is invalid.");
+      return;
+    }
 
     const saveUser = {
       name: name,
@@ -102,11 +109,11 @@ function Form() {
                   fullWidth
                   size="small"
                   value={email}
-                  error={errorEmail}
-                  helperText={errorEmail ? "Email is required." : ""}
+                  error={!!errorEmail}
+                  helperText={errorEmail ?? ""}
                   onChange={e => {
                     setEmail(e.target.value);
-                    setErrorEmail(false);
+                    setErrorEmail("");
                   }}
                 />
               </Grid>
