@@ -65,18 +65,15 @@ function Form() {
 
   return (
     <FormSection>
-      {/* User list - Header */}
       <FormHeader container alignItems="center">
         <Grid item xs={8}>
           <h3>Form</h3>
         </Grid>
       </FormHeader>
 
-      {/* User list - Body */}
       <FormBody>
         <form>
           <Grid container maxWidth="xs" alignItems="center" textAlign="center">
-            {/* NAME INPUT */}
             <FormInput container maxWidth="xs" textAlign="center">
               <Grid item xs={2} margin={1}>
                 <span>Name *</span>
@@ -96,7 +93,6 @@ function Form() {
               </Grid>
             </FormInput>
 
-            {/* EMAIL INPUT */}
             <FormInput container maxWidth="xs" textAlign="center">
               <Grid item xs={2} margin={1}>
                 <span>Email *</span>
@@ -116,7 +112,6 @@ function Form() {
               </Grid>
             </FormInput>
 
-            {/* USERNAME INPUT */}
             <FormInput container maxWidth="xs" textAlign="center">
               <Grid item xs={2} margin={1}>
                 <span>Username</span>
@@ -131,7 +126,6 @@ function Form() {
               </Grid>
             </FormInput>
 
-            {/* CITY */}
             <FormInput container maxWidth="xs" textAlign="center">
               <Grid item xs={2} margin={1}>
                 <span>City</span>

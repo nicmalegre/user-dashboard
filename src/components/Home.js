@@ -32,7 +32,6 @@ function Home() {
 
   return (
     <UserList>
-      {/* User list - Header */}
       <UserListHeader container alignItems="center">
         <Grid item xs={8}>
           <h3>User list</h3>
@@ -51,7 +50,6 @@ function Home() {
         </Grid>
       </UserListHeader>
 
-      {/* User list - Body */}
       <UserListBody>
         {users.length > 0 ? (
           <UserTable users={users} />
