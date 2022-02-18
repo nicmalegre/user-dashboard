@@ -4,7 +4,7 @@
 
 React/Redux administration panel/dashboard for user management.
 
-If you want to see the result, you can go to: https://user-dashboard-nicmalegre.herokuapp.com/
+If you want to see the result, you can go to https://user-dashboard-nicmalegre.herokuapp.com/ or https://nicmalegre-users.netlify.app/
 
 **Technologies and libraries:**
 
